@@ -1,0 +1,30 @@
+log = "debug"
+sleeptime = 1
+error_post = true
+
+[slack_update_post]
+text = "test"
+username = "bot"
+icon_emoji = ":sushi:"
+channel = "#random"
+link_names = true
+
+[slack_error_post]
+text = "error"
+username = "bot"
+icon_emoji = ":ghost:"
+channel = "#random"
+link_names = true
+
+[slack_start_post]
+text = "Running tonkotsu..."
+username = "bot"
+icon_emoji = ":ghost:"
+channel = "#random"
+link_names = true
+
+[webhook]
+url = ""
+
+[android]
+package = "com.mercariapp.mercari"
