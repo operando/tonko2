@@ -10,7 +10,7 @@ import (
 	"github.com/operando/golack"
 )
 
-const (o
+const (
 	GOOGLE_PLAY = "https://play.google.com/store/apps/details?id="
 )
 
@@ -35,16 +35,16 @@ func main() {
 
 	var googlePlayURL string
 	uPayload := golack.Payload{
-		config.SlackUpdatePost,
+		Slack: config.SlackUpdatePost,
 	}
 
 	ePayload := golack.Payload{
-		config.SlackErrorPost,
+		Slack: config.SlackErrorPost,
 	}
 
 	if config.SlackStartPost.Text != "" {
 		sPayload := golack.Payload{
-			config.SlackStartPost,
+			Slack: config.SlackStartPost,
 		}
 		golack.Post(sPayload, config.Webhook)
 	}
