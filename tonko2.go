@@ -1,17 +1,16 @@
-
 package main
 
 import (
 	"flag"
 	"fmt"
+	"net/http"
 	"time"
-    "net/http"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/operando/golack"
 )
 
-const (
+const (o
 	GOOGLE_PLAY = "https://play.google.com/store/apps/details?id="
 )
 
@@ -61,21 +60,21 @@ func main() {
 	log.Info("Slack Errro Message : " + config.SlackErrorPost.Text)
 
 	for {
-        resp, err := http.Get(googlePlayURL)
-        log.Info(resp)
-        if err != nil && config.ErrorPost {
-            ePayload.Slack.Text = ePayload.Slack.Text + "\n" + err.Error()
-            log.Error("Slack Errro Message : " + ePayload.Slack.Text)
-            golack.Post(ePayload, config.Webhook)
-        } else {
-            if resp.StatusCode != 404 {
-                golack.Post(uPayload, config.Webhook)
-                log.Info("Release!!!!!!!!!!!")
-                break
-            } else {
-                log.Info("No Release")
-            }
-        }
+		resp, err := http.Get(googlePlayURL)
+		log.Info(resp)
+		if err != nil && config.ErrorPost {
+			ePayload.Slack.Text = ePayload.Slack.Text + "\n" + err.Error()
+			log.Error("Slack Errro Message : " + ePayload.Slack.Text)
+			golack.Post(ePayload, config.Webhook)
+		} else {
+			if resp.StatusCode != 404 {
+				golack.Post(uPayload, config.Webhook)
+				log.Info("Release!!!!!!!!!!!")
+				break
+			} else {
+				log.Info("No Release")
+			}
+		}
 		time.Sleep(sleep)
 	}
 
