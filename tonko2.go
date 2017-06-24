@@ -68,6 +68,7 @@ func main() {
 			golack.Post(ePayload, config.Webhook)
 		} else {
 			if resp.StatusCode != 404 {
+				uPayload.Slack.Text = uPayload.Slack.Text + "\n" + googlePlayURL
 				golack.Post(uPayload, config.Webhook)
 				log.Info("Release!!!!!!!!!!!")
 				break
